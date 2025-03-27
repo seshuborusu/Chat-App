@@ -10,6 +10,8 @@ function Forgotpassword() {
     const [otp, setOtp] = useState()//for getting otp from field
     const [loading, setLoading] = useState(false)
     const [validation, setValidation] = useState()
+    const [timer, setTimer] = useState(5); // Initialize timer with 5 seconds
+    const [redirecting, setRedirecting] = useState(false);
     const navigate = useNavigate()
 
     const otpRegex = /^[0-9]+$/
@@ -70,11 +72,17 @@ function Forgotpassword() {
                 if (resp.status === 200) {
                     toast.success('OTP Verified Successfully!');
                     sessionStorage.setItem('email', resp.data.email); // Stores 'john_doe' under the key 'username'
+                    setRedirecting(true)
+                    const countdown = setInterval(() => {
 
-                    setTimeout(() => {
-                        //clearInterval(timer)
-                        navigate("/updatepassword")
-                    }, 5000)
+                        setTimer((prev) => {
+                            if (prev === 1) {
+                                clearInterval(countdown);
+                                navigate("/updatepassword"); // Navigate after countdown
+                            }
+                            return prev - 1;
+                        });
+                    }, 1000);
                 }
             } catch (err) {
                 console.log(err);
@@ -118,9 +126,14 @@ function Forgotpassword() {
                             setOtp(e.target.value)
                         }} />
                     </div>
-                    <div className="mt-3 w-100 text-center"> <button className="w-100 p-1 py-2 rounded-3 fw-normal" onClick={handleOtp}>{loading ? "Verifying..." : "Verify OTP"}</button></div>
+                    <div className="mt-3 w-100 text-center"> <button className="w-100 p-1 py-2 rounded-3 fw-normal" disabled={loading} onClick={handleOtp}>{loading ? "Verifying..." : "Verify OTP"}</button></div>
                     <p className=" mt-2 navigate-link cursor-pointer" >Don't receive OTP? <span onClick={() => { setRecotp(false) }} className="resend-otp-link">Resend</span> </p>
-                </div>
+                    {redirecting && (
+                        <div className="mt-2 text-center text-success ">
+                            <p>Wait..you will be redirected in {timer} seconds...</p>
+                        </div>
+                    )}</div>
+
 
             </div>
                 :
@@ -135,7 +148,7 @@ function Forgotpassword() {
                             <input type="email" placeholder="E-mail" className="form-control" onChange={(e) => { setEmail(e.target.value) }} />
                             {validation && <small className="text-danger px-2">{validation}</small>}
                         </div>
-                        <div className="mt-3  text-center"> <button className="w-50 p-1 py-2 rounded-3 fw-normal" onClick={sendOtprequest}>{loading ? "Sending OTP" : "Reset password"}</button></div>
+                        <div className="mt-3  text-center"> <button className="w-50 p-1 py-2 rounded-3 fw-normal" disabled={loading} onClick={sendOtprequest}>{loading ? "Sending OTP" : "Reset password"}</button></div>
                         <p className=" mt-2"> <Link to={"/login"} className="text-decoration-none mt-1 navigate-link">  Return to Login</Link></p>
                     </div>
 

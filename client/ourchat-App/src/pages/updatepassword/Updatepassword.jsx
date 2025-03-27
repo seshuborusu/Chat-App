@@ -12,7 +12,9 @@ function Updatepassword() {
         passwordvalidation: "",
         cnfrmpasswordvalidation: ""
     })
-    const navigate=useNavigate()
+    const [timer, setTimer] = useState(5); // Initialize timer with 5 seconds
+    const [redirecting, setRedirecting] = useState(false);
+    const navigate = useNavigate()
     const PasswordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
     const getPassword = (e) => {
@@ -30,8 +32,8 @@ function Updatepassword() {
 
     async function handlePasswordreq() {
         if (!PasswordRegex.test(newpassword.password) || !PasswordRegex.test(newpassword.password)) {
-           toast.warning("Enter valid password")
-           return
+            toast.warning("Enter valid password")
+            return
         }
         const email = sessionStorage.getItem("email")
         if (newpassword.password !== newpassword.conformpassword) {
@@ -46,13 +48,22 @@ function Updatepassword() {
 
                 toast.success("Password updated successfully!");
                 //console.log("succes");
-               setTimeout(() => {
-                navigate("/login")
-               }, 2000); 
-                
+                setRedirecting(true)
+                const countdown = setInterval(() => {
+
+                    setTimer((prev) => {
+                        if (prev === 1) {
+                            clearInterval(countdown);
+                            navigate("/home"); // Navigate after countdown
+                        }
+                        return prev - 1;
+                    });
+                }, 1000);
+
+
             }
         } catch (error) {
-            console.log("sdddd");
+            console.log("sdddd", error);
             if (error.response) {
                 // Handle error response from the server
                 toast.error(error.response.data.message);
@@ -82,7 +93,13 @@ function Updatepassword() {
 
                     </div>
                     <div className="text-center mt-3 "><button className="rounded-3 py-2 px-3" onClick={handlePasswordreq}>Update password</button></div>
+                    {redirecting && (
+                        <div className="mt-3 text-center text-success ">
+                            <p>You will be redirected to the home page in {timer} seconds...</p>
+                        </div>
+                    )}
                 </div>
+
 
             </div>
             <ToastContainer
