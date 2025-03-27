@@ -1,0 +1,105 @@
+
+.sign {
+    height: 100vh;
+    /* border: 1px solid red; */
+
+}
+
+.signup-container div {
+    padding: 3px;
+}
+
+button {
+    color: white;
+    background-color: blueviolet;
+    border: none;
+    font-weight: 600;
+
+}
+
+button:disabled {
+    background-color: rgba(137, 43, 226, 0.473);
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border: 1px solid rgb(214, 211, 211);
+}
+
+::-webkit-input-placeholder {
+    font-size: 17px;
+}
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+
+/* General styling for the Toast container */
+.Toastify__toast-container {
+    z-index: 9999;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+/* Default position for Toast on larger screens */
+.Toastify__toast-container--top-right {
+    top: 20px;
+    right: 20px;
+}
+
+/* Mobile screen (max-width: 767px) - Adjust position and size */
+@media (max-width: 767px) {
+    .Toastify__toast-container--top-right {
+        top: 10px;
+        right: 10px;
+    }
+
+    .Toastify__toast {
+        margin: 10px 4px;
+        font-size: 15px;
+        /* Smaller font size for mobile */
+        padding: 5px 13px;
+        /* Adjust padding for smaller screen */
+        max-width: 80%;
+        /* Allow toasts to take up 90% of the screen width */
+        font-family: 'Roboto', sans-serif;
+    }
+}
+
+/* Tablet screen (768px to 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .Toastify__toast-container--top-right {
+        top: 20px;
+        right: 20px;
+    }
+
+    .Toastify__toast {
+        font-size: 16px;
+        /* Medium font size for tablets */
+        padding: 12px 20px;
+        max-width: 100%;
+        /* Set max width for tablets */
+    }
+}
+
+/* Desktop screen (1025px and above) */
+@media (min-width: 1025px) {
+    .Toastify__toast-container--top-right {
+        top: 30px;
+        right: 30px;
+    }
+
+    .Toastify__toast {
+        font-size: 17px;
+        font-family: 'Roboto', sans-serif;
+        /* Larger font size for desktops */
+        padding: 13px 20px;
+        max-width: 400px;
+        /* Set a max width for desktop */
+    }
+}
