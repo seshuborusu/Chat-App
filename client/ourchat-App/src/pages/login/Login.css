@@ -2,3 +2,10 @@
     height: 100vh;
     padding: 10px;
 }
+.navigate-link{
+    
+        color: rgb(140, 39, 235);
+        font-weight: 500;
+        font-size: 14px;
+    
+}

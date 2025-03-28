@@ -80,7 +80,7 @@ function Login() {
     }
     return (
         <div className="login-main-container  d-flex justify-content-center align-items-center  container-fluid">
-            <div className=" rounded-3 shadow  col-12 col-sm-8 col-md-6 col-lg-5 p-3 p-lg-4">
+            <div className=" rounded-3 shadow  col-12 col-sm-8 col-md-6 col-lg-4 p-4 p-lg-3">
                 <h1 className="text-center pb-3 ">Login</h1>
                 <form onSubmit={getData}>
                     <div className="w-100 ">
@@ -91,7 +91,7 @@ function Login() {
                         <input type="password" placeholder="Password" name="Password" className="form-control " onChange={getuserData} value={user.Password} />
                         {validation.Passwordvalidation && <small className="text-danger w-50 ">{validation.Passwordvalidation}</small>}
                     </div>
-                    <p className="navigate-link"><Link to={"/passwordreset"} className="text-decoration-none  navigate-link" >Forgotten password?</Link></p>
+                    <p className="navigatee-link "><Link to={"/passwordreset"} className="text-decoration-none navigate-link " >Forgotten password?</Link></p>
 
                     <div className=" text-center mt-2 ">
                         <div className="w-100">
@@ -99,7 +99,7 @@ function Login() {
                         </div>
                     </div>
                     <div className="mt-2 text-center">
-                        <p>Don't have an account?<Link to="/" className="text-decoration-none text-dark fw-semibold"> <span className="fw-semibold">Sign up</span></Link></p>
+                        <p>Don't have an account?<Link to="/signup" className="text-decoration-none text-dark fw-semibold"> <span className="fw-semibold">Sign up</span></Link></p>
 
                     </div>
 

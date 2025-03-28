@@ -16,14 +16,14 @@ Route.post("/adduser", async (req, res) => {
         // Check if the email already exists in the database
         const olduser = await model.findOne({ Email });
         // console.log(olduser); // For debugging
-        console.log("Password before hashing:", Password);
+       // console.log("Password before hashing:", Password);
 
 
         if (olduser == null) {
             // Hash the password before saving it
             const hashedPassword = await bcrypt.hash(Password, 10); // 10 is the salt rounds
             newuser.Password = hashedPassword; // Replace the plain password with the hashed password
-            console.log("Hashed Password:", hashedPassword);
+           // console.log("Hashed Password:", hashedPassword);
             // Create a new user object and save it to the database
             const user = new model(newuser);
             const savedUser = await user.save();
@@ -67,8 +67,8 @@ Route.post("/getuser", async (req, res) => {
 
         // Compare the provided password with the stored hashed password
         const isPasswordValid = await bcrypt.compare(Password, existuser.Password);
-        console.log("Password entered:", Password);
-        console.log("Hashed password in DB:", existuser.Password);
+        //console.log("Password entered:", Password);
+        //console.log("Hashed password in DB:", existuser.Password);
         if (!isPasswordValid) {
             return res.status(401).json({
                 ok: false,
@@ -151,7 +151,7 @@ Route.post("/password-reset", async (req, res) => {
         }
     }
     catch (error) {
-        console.error(error);
+        console.error(error,"dd");
         res.status(500).json({
             statusText: "error",
             message: "Internal Server Error at Forgot Password OTP",

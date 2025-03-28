@@ -116,7 +116,7 @@ function Forgotpassword() {
         <div>
             {recotp ? <div className="container-fluid d-flex flex-column justify-content-center align-items-cent forgotmain-container">
 
-                <div className=" container  d-flex flex-column  justify-content-center shadow  rounded-3 p-lg-5  p-2 py-5  col-12 col-sm-8 col-md-6 col-lg-5">
+                <div className=" container  d-flex flex-column  justify-content-center shadow  rounded-3 p-lg-4  p-2 py-5  col-12 col-sm-8 col-md-6 col-lg-4 ">
                     <div><h3 className="text-start">verify Otp</h3>
                         <div className="p-3 border  text-center bg-light bg-secondary rounded-3 text-success fw-semibold ">OTP sent to your email</div>
                     </div>
@@ -129,17 +129,22 @@ function Forgotpassword() {
                     <div className="mt-3 w-100 text-center"> <button className="w-100 p-1 py-2 rounded-3 fw-normal" disabled={loading} onClick={handleOtp}>{loading ? "Verifying..." : "Verify OTP"}</button></div>
                     <p className=" mt-2 navigate-link cursor-pointer" >Don't receive OTP? <span onClick={() => { setRecotp(false) }} className="resend-otp-link">Resend</span> </p>
                     {redirecting && (
-                        <div className="mt-2 text-center text-success ">
-                            <p>Wait..you will be redirected in {timer} seconds...</p>
+                        <div className="mt-2 text-center ">
+                            <p>Wait.. You will be redirected in {timer} seconds...</p>
+                            {/* Optional: Add a spinner or progress bar */}
+                            <div className="spinner-border fw-semibold" role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </div>
                         </div>
-                    )}</div>
+                    )}
+                </div>
 
 
             </div>
                 :
                 <div className="container-fluid d-flex flex-column justify-content-center align-items-cent forgotmain-container">
 
-                    <div className=" container  d-flex flex-column  justify-content-center shadow  rounded-3 p-lg-5  p-3 py-5  col-12 col-sm-8 col-md-6 col-lg-5">
+                    <div className=" container  d-flex flex-column  justify-content-center shadow  rounded-3 p-lg-4  p-3   col-12 col-sm-8 col-md-6 col-lg-4">
                         <div><h3 className="text-start">Reset Your Password</h3>
                             <small>Enter the email associated to your account and we'll send you password reset OTP.</small>
                         </div>
@@ -149,7 +154,7 @@ function Forgotpassword() {
                             {validation && <small className="text-danger px-2">{validation}</small>}
                         </div>
                         <div className="mt-3  text-center"> <button className="w-50 p-1 py-2 rounded-3 fw-normal" disabled={loading} onClick={sendOtprequest}>{loading ? "Sending OTP" : "Reset password"}</button></div>
-                        <p className=" mt-2"> <Link to={"/login"} className="text-decoration-none mt-1 navigate-link">  Return to Login</Link></p>
+                        <p className=" mt-2"> <Link to={"/"} className="text-decoration-none mt-1 navigate-link">  Return to Login</Link></p>
                     </div>
 
                 </div>

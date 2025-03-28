@@ -29,13 +29,13 @@ function Updatepassword() {
             return
         }
     }
+    const email = sessionStorage.getItem("email")
 
     async function handlePasswordreq() {
         if (!PasswordRegex.test(newpassword.password) || !PasswordRegex.test(newpassword.password)) {
             toast.warning("Enter valid password")
             return
         }
-        const email = sessionStorage.getItem("email")
         if (newpassword.password !== newpassword.conformpassword) {
             toast.info("password not match")
             console.log(newpassword);
@@ -54,7 +54,7 @@ function Updatepassword() {
                     setTimer((prev) => {
                         if (prev === 1) {
                             clearInterval(countdown);
-                            navigate("/home"); // Navigate after countdown
+                            navigate("/login"); // Navigate after countdown
                         }
                         return prev - 1;
                     });
@@ -63,7 +63,7 @@ function Updatepassword() {
 
             }
         } catch (error) {
-            console.log("sdddd", error);
+            //console.log("sdddd", error);
             if (error.response) {
                 // Handle error response from the server
                 toast.error(error.response.data.message);
@@ -83,6 +83,9 @@ function Updatepassword() {
                     <div><h3 className="text-center ">Change your password</h3>
                         <small className="px-3">Enter a new password below to change your password.</small>
                     </div>
+                    <div className=" mt-3">
+                        <input type="text" placeholder="E-mail" className="form-control" value={email} disabled />
+                    </div>
                     <div className="my-3">
                         <input type="text" placeholder="New password" className="form-control" onChange={getPassword} name="password" />
                         {validation.passwordvalidation && <small className="text-danger">Password must be at least 8 letters include number,character</small>}
@@ -94,8 +97,12 @@ function Updatepassword() {
                     </div>
                     <div className="text-center mt-3 "><button className="rounded-3 py-2 px-3" onClick={handlePasswordreq}>Update password</button></div>
                     {redirecting && (
-                        <div className="mt-3 text-center text-success ">
-                            <p>You will be redirected to the home page in {timer} seconds...</p>
+                        <div className="mt-2 text-center ">
+                            <p>Wait.. You will be redirected in {timer} seconds...</p>
+                            {/* Optional: Add a spinner or progress bar */}
+                            <div className="spinner-border fw-semibold" role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </div>
                         </div>
                     )}
                 </div>

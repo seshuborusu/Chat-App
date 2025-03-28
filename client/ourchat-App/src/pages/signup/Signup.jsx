@@ -128,7 +128,7 @@ function Signup() {
 
     return (
         <div className="sign d-flex justify-content-center align-items-center container-fluid">
-            <div className="signup-main-container rounded-3 shadow p-lg-5 p-3 col-12 col-sm-8 col-md-6 col-lg-5">
+            <div className="signup-main-container rounded-3 shadow p-lg-4 p-3 col-12 col-sm-8 col-md-6 col-lg-4 p-3 ">
                 <h1 className="text-center pb-3">Signup</h1>
                 <form onSubmit={sendData}>
                     <div className="signup-container">
@@ -197,7 +197,7 @@ function Signup() {
                         </div>
                         <p>
                             Already have an account?
-                            <Link to="/login" className="text-decoration-none text-dark">
+                            <Link to="/" className="text-decoration-none text-dark">
                                 <span className="fw-semibold"> Login</span>
                             </Link>
                         </p>
