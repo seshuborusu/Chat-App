@@ -123,7 +123,7 @@ function Signup() {
     // Close modal function
     const closeModel = () => {
         setOpenmodel(false);  // Close the modal by setting openmodel to false
-        navigate('/login');  // Navigate to login page after closing the modal
+        navigate('/');  // Navigate to login page after closing the modal
     };
 
     return (

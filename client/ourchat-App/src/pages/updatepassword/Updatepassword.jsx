@@ -54,7 +54,7 @@ function Updatepassword() {
                     setTimer((prev) => {
                         if (prev === 1) {
                             clearInterval(countdown);
-                            navigate("/login"); // Navigate after countdown
+                            navigate("/"); // Navigate after countdown
                         }
                         return prev - 1;
                     });
@@ -77,10 +77,10 @@ function Updatepassword() {
     }
     return (
         <div className="updatepassword-main-container">
-            <div className="container-fluid d-flex flex-column justify-content-center align-items-cent forgotmain-container">
+            <div className="container-fluid d-flex flex-column justify-content-center align-items-centr forgotmain-container">
 
                 <div className=" container  d-flex flex-column  justify-content-center shadow  rounded-3 p-lg-5  p-3 py-5  col-12 col-sm-8 col-md-6 col-lg-5">
-                    <div><h3 className="text-center update-heading">Change your password</h3>
+                    <div><h3 className="text-start update-heading">Change your password</h3>
                         <small className="px-1">Enter a new password below to change your password.</small>
                     </div>
                     <div className=" mt-3">

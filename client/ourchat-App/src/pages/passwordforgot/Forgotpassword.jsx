@@ -23,17 +23,17 @@ function Forgotpassword() {
     const sendOtprequest = async () => {
         if (email == '') {
             console.log(email);
-            toast.error("Enter e-mail address")
+            toast.error("Enter valid E-mail")
             return
         }
         else if (!EmailRegex.test(email)) {
             setValidation(EmailRegex.test(email) ? "" : "E-mail not in valid format")
             return
         }
-        console.log(email);
+        //console.log(email);
         setLoading(true)
         try {
-            console.log(email, "d");
+          //  console.log(email, "d");
             const resp = await axios.post("http://localhost:1997/api/users/password-reset", { email })
             console.log(resp.status);
             if (resp.status === 200) {
@@ -117,8 +117,8 @@ function Forgotpassword() {
             {recotp ? <div className="container-fluid d-flex flex-column justify-content-center align-items-cent forgotmain-container">
 
                 <div className=" container  d-flex flex-column  justify-content-center shadow  rounded-3 p-lg-4  p-2 py-5  col-12 col-sm-8 col-md-6 col-lg-4 ">
-                    <div><h3 className="text-start">verify Otp</h3>
-                        <div className="p-3 border  text-center bg-light bg-secondary rounded-3 text-success fw-semibold ">OTP sent to your email</div>
+                    <div><h3 className="text-start mb-3">Verify OTP</h3>
+                        <div > <p className="p-3 border  text-center bg-light bg-secondary rounded-3 text-success fw-normal">OTP sent to your email</p></div>
                     </div>
                     {/* <label className="fw-semibold my-1 mt-4">Your Email</label> */}
                     <div className="w-100 mt-4">
