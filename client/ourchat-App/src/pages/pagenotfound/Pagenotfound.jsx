@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Pagenotfound = () => {
     const navigate = useNavigate()
-    const gohome=()=>{
+    const gohome = () => {
         navigate("/home")
     }
     return (

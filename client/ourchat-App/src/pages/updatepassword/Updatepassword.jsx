@@ -33,12 +33,12 @@ function Updatepassword() {
 
     async function handlePasswordreq() {
         if (!PasswordRegex.test(newpassword.password) || !PasswordRegex.test(newpassword.password)) {
-            toast.warning("Enter valid password")
+            toast.warning("Enter password")
             return
         }
         if (newpassword.password !== newpassword.conformpassword) {
-            toast.info("password not match")
-            console.log(newpassword);
+            toast.info("Password not match")
+           // console.log(newpassword);
             return
         }
 
@@ -80,8 +80,8 @@ function Updatepassword() {
             <div className="container-fluid d-flex flex-column justify-content-center align-items-cent forgotmain-container">
 
                 <div className=" container  d-flex flex-column  justify-content-center shadow  rounded-3 p-lg-5  p-3 py-5  col-12 col-sm-8 col-md-6 col-lg-5">
-                    <div><h3 className="text-center ">Change your password</h3>
-                        <small className="px-3">Enter a new password below to change your password.</small>
+                    <div><h3 className="text-center update-heading">Change your password</h3>
+                        <small className="px-1">Enter a new password below to change your password.</small>
                     </div>
                     <div className=" mt-3">
                         <input type="text" placeholder="E-mail" className="form-control" value={email} disabled />

@@ -87,11 +87,11 @@ function Login() {
                         <input type="email" placeholder="E-mail" name="Email" className="form-control" onChange={getuserData} value={user.Phone} />
                         {validation.Emailvalidation && <small className="text-danger">{validation.Emailvalidation}</small>}
                     </div>
-                    <div className="w-100 my-2">
+                    <div className="w-100 mt-3">
                         <input type="password" placeholder="Password" name="Password" className="form-control " onChange={getuserData} value={user.Password} />
                         {validation.Passwordvalidation && <small className="text-danger w-50 ">{validation.Passwordvalidation}</small>}
                     </div>
-                    <p className="navigatee-link "><Link to={"/passwordreset"} className="text-decoration-none navigate-link " >Forgotten password?</Link></p>
+                    <p className="navigate-link mt-1 "><Link to={"/passwordreset"} className="text-decoration-none navigate-link " >Forgotten password?</Link></p>
 
                     <div className=" text-center mt-2 ">
                         <div className="w-100">

@@ -129,7 +129,7 @@ function Signup() {
     return (
         <div className="sign d-flex justify-content-center align-items-center container-fluid">
             <div className="signup-main-container rounded-3 shadow p-lg-4 p-3 col-12 col-sm-8 col-md-6 col-lg-4 p-3 ">
-                <h1 className="text-center pb-3">Signup</h1>
+                <h1 className="text-center mb-3">Signup</h1>
                 <form onSubmit={sendData}>
                     <div className="signup-container">
                         <div className="row">
@@ -195,7 +195,7 @@ function Signup() {
                                 {validation.Passwordvalidation && <small className="text-danger ">{validation.Passwordvalidation}</small>}
                             </div>
                         </div>
-                        <p>
+                        <p className=''>
                             Already have an account?
                             <Link to="/" className="text-decoration-none text-dark">
                                 <span className="fw-semibold"> Login</span>
@@ -203,7 +203,7 @@ function Signup() {
                         </p>
                     </div>
 
-                    <div className="row text-center">
+                    <div className="row text-center mt-2">
                         <div className="col-12">
                             <button className="py-2 rounded-3 w-50 ">Register</button>
                         </div>
